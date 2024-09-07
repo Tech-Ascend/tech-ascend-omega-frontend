@@ -1,7 +1,7 @@
 import techAscend from "./instances/techAscend";
 
 export default {
-  containsDuplicates() {
-    return techAscend.get("/arrays");
+  containsDuplicates(numbers: number[]) {
+    return techAscend.post("/arrays", numbers);
   },
 };

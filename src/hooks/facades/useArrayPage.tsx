@@ -1,12 +1,12 @@
-import { useCallback } from "react";
 import ArrayProblems from "../../store/ArrayProblems";
 
 function useArrayPage() {
-  const containsDuplicate = useCallback(async () => {
-    await ArrayProblems.containsDuplicates();
-  }, []);
+  const handleCheckDuplicates = async (inputNumbers: string) => {
+    const numbers = inputNumbers.split(",").map((num) => Number(num.trim()));
+    return await ArrayProblems.containsDuplicates(numbers);
+  };
 
-  return containsDuplicate;
+  return { handleCheckDuplicates };
 }
 
 export default useArrayPage;

@@ -1,13 +1,11 @@
-import useArrayPage from "../../hooks/facades/useArrayPage";
+import ContainsDuplicates from "./ContainsDuplicates";
 
 function ArrayPage() {
-  const containsDuplicates = useArrayPage();
-
   return (
     <>
-      <div>hello </div>
-      <button onClick={containsDuplicates} />
+      <ContainsDuplicates />
     </>
   );
 }
+
 export default ArrayPage;
