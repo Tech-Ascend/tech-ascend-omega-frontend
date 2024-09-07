@@ -1,11 +1,12 @@
 import useArrayPage from "../../hooks/facades/useArrayPage";
 
 function ArrayPage() {
-  const value = useArrayPage();
-  console.log(value);
+  const containsDuplicates = useArrayPage();
+
   return (
     <>
       <div>hello </div>
+      <button onClick={containsDuplicates} />
     </>
   );
 }

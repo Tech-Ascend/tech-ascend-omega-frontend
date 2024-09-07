@@ -1,7 +1,7 @@
-import axios from "axios";
+import techAscend from "./instances/techAscend";
 
 export default {
   containsDuplicates() {
-    return axios.get("");
+    return techAscend.get("/arrays");
   },
 };
