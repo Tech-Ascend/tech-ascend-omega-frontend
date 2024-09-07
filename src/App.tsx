@@ -1,21 +1,9 @@
-import { useState } from "react";
 import "./App.css";
-import arrays from "../tech-ascend-project1/src/arrays/index";
+import { RouterProvider } from "react-router-dom";
+import UserRoutes from "./routes/UserRoutes";
 
 function App() {
-  const [result, setResult] = useState("");
-
-  const handleArraysClick = () => {
-    const arraysResult = arrays();
-    setResult(arraysResult);
-  };
-
-  return (
-    <>
-      <button onClick={handleArraysClick}>Call Arrays Function</button>
-      {result && <p>Result: {result}</p>}
-    </>
-  );
+  return <RouterProvider router={UserRoutes()} />;
 }
 
 export default App;
