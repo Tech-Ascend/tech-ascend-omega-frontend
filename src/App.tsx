@@ -9,7 +9,11 @@ function App() {
     const arraysResult = arrays();
     setResult(arraysResult);
   };
-
+// Testing changes in the frontend
+// Testing changes in the frontend
+// Testing changes in the frontend
+// Testing changes in the frontend
+// Testing changes in the frontend
   return (
     <>
       <button onClick={handleArraysClick}>Call Arrays Function</button>
