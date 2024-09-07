@@ -1,14 +1,22 @@
 import arrayProblems from "../services/arrayProblems";
 
-async function containsDuplicates(numbers: number[]): Promise<boolean> {
-  const {
-    data: { containsDuplicates },
-  } = await arrayProblems.containsDuplicates(numbers);
+export interface Step {
+  number: number;
+  isDuplicate: boolean;
+}
 
-  return containsDuplicates;
+export interface ContainsDuplicatesResult {
+  containsDuplicates: boolean;
+  steps: Step[];
+}
+
+async function containsDuplicates(numbers: number[]): Promise<ContainsDuplicatesResult> {
+  const res = await arrayProblems.containsDuplicates(numbers);
+  return res;
 }
 
 const ArrayProblems = {
   containsDuplicates,
 };
+
 export default ArrayProblems;

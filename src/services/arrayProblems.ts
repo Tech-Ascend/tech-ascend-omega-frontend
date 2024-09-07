@@ -1,7 +1,9 @@
+import { ContainsDuplicatesResult } from "../store/ArrayProblems";
 import techAscend from "./instances/techAscend";
 
 export default {
-  containsDuplicates(numbers: number[]) {
-    return techAscend.post("/arrays", numbers);
+  async containsDuplicates(numbers: number[]): Promise<ContainsDuplicatesResult> {
+    const response = await techAscend.post<ContainsDuplicatesResult>("/arrays", numbers);
+    return response.data;
   },
 };
