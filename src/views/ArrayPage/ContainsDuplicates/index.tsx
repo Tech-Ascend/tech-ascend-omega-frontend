@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import useArrayPage from "../../../hooks/facades/useArrayPage";
-
-interface Step {
-  number: number;
-  isDuplicate: boolean;
-}
-
-interface ContainsDuplicatesResult {
-  containsDuplicates: boolean;
-  steps: Step[];
-}
+import { ContainsDuplicatesResult } from "../../../store/ArrayProblems";
 
 function ContainsDuplicates() {
   const [inputNumbers, setInputNumbers] = useState("");
   const [result, setResult] = useState<ContainsDuplicatesResult | null>(null);
-  const { handleCheckDuplicates, error } = useArrayPage();
+  const { handleCheckDuplicates } = useArrayPage();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputNumbers(e.target.value);
@@ -23,13 +14,8 @@ function ContainsDuplicates() {
 
   const onCheckDuplicates = async () => {
     const result = await handleCheckDuplicates(inputNumbers);
-    console.log("API Response:", result); // Debugging log
-    if (result) {
-      setResult(result);
-    }
+    if (result) setResult(result);
   };
-
-  console.log("Current result state:", result); // Debugging log
 
   return (
     <div className="p-4">
@@ -49,22 +35,14 @@ function ContainsDuplicates() {
           Check for Duplicates
         </button>
       </div>
-      {error && (
-        <p className="text-red-500 mb-4">{error}</p>
-      )}
       {result && (
         <>
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Algorithm Steps:</h2>
             {result.steps && result.steps.length > 0 ? (
               <div className="flex flex-wrap gap-2">
-                {result.steps.map((step, index) => (
-                  <div
-                    key={index}
-                    className={`p-2 rounded ${
-                      step.isDuplicate ? "bg-red-200" : "bg-green-200"
-                    }`}
-                  >
+                {result.steps.map((step) => (
+                  <div>
                     {step.number}
                     {step.isDuplicate && " (Duplicate!)"}
                   </div>
@@ -74,15 +52,9 @@ function ContainsDuplicates() {
               <p>No steps to display.</p>
             )}
           </div>
-          <p
-            className={`text-lg font-semibold ${
-              result.containsDuplicates ? "text-red-600" : "text-green-600"
-            }`}
-          >
-            {result.containsDuplicates
-              ? "The array contains duplicates"
-              : "The array does not contain duplicates"}
-          </p>
+          {result.containsDuplicates
+            ? "The array contains duplicates"
+            : "The array does not contain duplicates"}
         </>
       )}
     </div>

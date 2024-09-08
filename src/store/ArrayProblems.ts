@@ -11,8 +11,7 @@ export interface ContainsDuplicatesResult {
 }
 
 async function containsDuplicates(numbers: number[]): Promise<ContainsDuplicatesResult> {
-  const res = await arrayProblems.containsDuplicates(numbers);
-  return res;
+  return await arrayProblems.containsDuplicates(numbers);;
 }
 
 const ArrayProblems = {
