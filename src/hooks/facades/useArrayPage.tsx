@@ -4,7 +4,7 @@ import ArrayProblems, {
 
 function useArrayPage() {
   const handleCheckDuplicates = async (
-    inputString: string
+    inputString: string,
   ): Promise<ContainsDuplicatesResult> => {
     const numbers = inputString.split(",").map((number) => {
       const parsed = parseInt(number.trim());

@@ -10,8 +10,10 @@ export interface ContainsDuplicatesResult {
   steps: Step[];
 }
 
-async function containsDuplicates(numbers: number[]): Promise<ContainsDuplicatesResult> {
-  return await arrayProblems.containsDuplicates(numbers);;
+async function containsDuplicates(
+  numbers: number[],
+): Promise<ContainsDuplicatesResult> {
+  return await arrayProblems.containsDuplicates(numbers);
 }
 
 const ArrayProblems = {
