@@ -1,1 +1,1 @@
-# React + TypeScript + Vite TECH ASCEND PROJECT
+# React + TypeScript + Vite TECH ASCEND PROJECT.
