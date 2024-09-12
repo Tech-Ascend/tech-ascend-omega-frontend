@@ -16,8 +16,13 @@ async function containsDuplicates(
   return await arrayProblems.containsDuplicates(numbers);
 }
 
+async function isValidSudokuBoard(board: string[]){
+  return await arrayProblems.isValidSudoku(board)
+}
+
 const ArrayProblems = {
   containsDuplicates,
+  isValidSudokuBoard
 };
 
 export default ArrayProblems;

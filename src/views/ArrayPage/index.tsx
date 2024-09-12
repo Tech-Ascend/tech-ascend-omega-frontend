@@ -4,6 +4,7 @@ function ArrayPage() {
   return (
     <>
       <ContainsDuplicates />
+      <IsValidSoduko />
     </>
   );
 }
