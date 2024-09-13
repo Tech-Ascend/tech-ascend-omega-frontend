@@ -16,7 +16,7 @@ async function containsDuplicates(
   return await arrayProblems.containsDuplicates(numbers);
 }
 
-async function isValidSudokuBoard(board: string[]){
+async function isValidSudokuBoard(board: string[][]){
   return await arrayProblems.isValidSudoku(board)
 }
 

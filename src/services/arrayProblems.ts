@@ -6,7 +6,7 @@ export default {
     const response = await techAscend.post<ContainsDuplicatesResult>("/arrays", numbers);
     return response.data;
   },
-  async isValidSudoku(board: string[]) {
-    return await techAscend.post("/arrays/sudoku", board);
+  async isValidSudoku(board: string[][]) {
+    return await techAscend.post("/arrays/sudoku",  JSON.stringify({ board }));
   },
 };

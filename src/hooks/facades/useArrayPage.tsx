@@ -11,7 +11,7 @@ function useArrayPage() {
     return await ArrayProblems.containsDuplicates(numbers);
   };
 
-  const handleValidSudoku = async (board: string[]) => {
+  const handleValidSudoku = async (board: string[][]) => {
     return await ArrayProblems.isValidSudokuBoard(board);
   };
 
