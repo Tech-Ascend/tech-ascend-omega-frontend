@@ -9,6 +9,28 @@ interface SudokuFeedback {
   Step: string;
 }
 
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(9, 1fr)",
+  gap: "1px",
+  backgroundColor: "#000",
+  padding: "3px",
+  maxWidth: "400px",
+  margin: "0 auto 16px auto",
+};
+
+const getCellStyle = (rowIndex: number, colIndex: number) => ({
+  width: "100%",
+  height: "40px",
+  textAlign: "center" as const,
+  border: "1px solid #d1d5db",
+  fontSize: "18px",
+  backgroundColor: "white",
+  borderTop: rowIndex % 3 === 0 ? "3px solid #000" : "0px",
+  borderLeft: colIndex % 3 === 0 ? "3px solid #000" : "1px solid #000",
+  borderRight: colIndex === 8 ? "5px solid #000" : "0px solid #d1d5db",
+});
+
 function IsValidSudoku() {
   const { handleValidSudoku } = useArrayPage();
   const [feedback, setFeedback] = useState<SudokuFeedback[]>([]);
@@ -29,38 +51,13 @@ function IsValidSudoku() {
   };
 
   const handleSubmit = async () => {
-    try {
-      const { data: response } = await handleValidSudoku(board);
-      setFeedback(response);
-    } catch (error) {
-      console.error("Error validating Sudoku:", error);
-    }
+    const sudokuFeedback = await handleValidSudoku(board);
+    setFeedback(sudokuFeedback);
   };
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(9, 1fr)",
-    gap: "1px",
-    backgroundColor: "#000",
-    padding: "3px",
-    maxWidth: "400px",
-    margin: "0 auto 16px auto",
-  };
-
-  const getCellStyle = (rowIndex: number, colIndex: number) => ({
-    width: "100%",
-    height: "40px",
-    textAlign: "center" as const,
-    border: "1px solid #d1d5db",
-    fontSize: "18px",
-    backgroundColor: "white",
-    borderTop: rowIndex % 3 === 0 ? "3px solid #000" : "0px",
-    borderLeft: colIndex % 3 === 0 ? "3px solid #000" : "1px solid #000",
-    borderRight: colIndex === 8 ? "5px solid #000" : "0px solid #d1d5db",
-  });
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Is Valid Sudoku Board</h1>
+    <div>
+      <h1>Is Valid Sudoku Board</h1>
       <div style={gridStyle}>
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
@@ -75,20 +72,14 @@ function IsValidSudoku() {
           ))
         )}
       </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-        onClick={handleSubmit}
-      >
-        Validate Sudoku
-      </button>
-
+      <button onClick={handleSubmit}>Validate Sudoku</button>
       {feedback.length > 0 && (
-        <div className="mt-4">
-          <h2 className="text-xl font-bold mb-2">Validation Feedback</h2>
-          <div className="bg-gray-100 p-4 rounded">
+        <div>
+          <h2>Validation Feedback</h2>
+          <div>
             {feedback.map((item, index) =>
               item.Step != "Empty cell" ? (
-                <div key={index} className={`mb-2 p-2 rounded ${item.Valid ? "bg-green-100" : "bg-red-100"}`}>
+                <div key={index}>
                   <p>
                     {item.Digit !== -1 && `Digit: ${item.Digit + 1} `}
                     {item.Step}
