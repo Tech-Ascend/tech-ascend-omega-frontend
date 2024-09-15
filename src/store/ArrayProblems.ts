@@ -1,4 +1,5 @@
 import arrayProblems from "../services/arrayProblems";
+import { ValidAnagramResults } from "../views/ArrayPage/ValidAnagram";
 
 export interface Step {
   number: number;
@@ -16,8 +17,13 @@ async function containsDuplicates(
   return await arrayProblems.containsDuplicates(numbers);
 }
 
+async function validAnagrams(s: string, t:string): Promise<ValidAnagramResults>{
+  return await arrayProblems.validAnagrams(s, t)
+}
+
 const ArrayProblems = {
   containsDuplicates,
+  validAnagrams
 };
 
 export default ArrayProblems;

@@ -1,4 +1,5 @@
 import { ContainsDuplicatesResult } from "../store/ArrayProblems";
+import { ValidAnagramResults } from "../views/ArrayPage/ValidAnagram";
 import techAscend from "./instances/techAscend";
 
 export default {
@@ -11,4 +12,8 @@ export default {
     );
     return response.data;
   },
+  async validAnagrams(s: string, t: string):Promise<ValidAnagramResults>{
+    const response = await techAscend.post<ValidAnagramResults>("/arrays/valid-anagram", {s, t})
+    return response.data
+  }
 };
